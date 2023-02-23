@@ -21,7 +21,7 @@ public class SecurityConfiguration {
             "/api/v1/unsecure/**",
             "/api/v1/auth/**",
             "/api/v1/auth/admin/**",
-            "/api/v1/secure/test"
+            "/api/v1/secure/test",
     };
     public String[] CAN_ACCESS_ADMIN = {
             "/api/v1/secure/admin/category/**",

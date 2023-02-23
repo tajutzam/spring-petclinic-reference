@@ -20,7 +20,7 @@ import java.util.Collections;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Admin extends NamedBaseEntity implements UserDetails {
+public class Admin  implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -28,6 +28,7 @@ public class Admin extends NamedBaseEntity implements UserDetails {
     private String password;
     private String address;
     private String email;
+    private String name;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
