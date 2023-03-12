@@ -2,6 +2,7 @@ package com.zam.studypetclinic.configuration;
 
 
 import com.zam.studypetclinic.services.impl.AdminServiceImpl;
+import com.zam.studypetclinic.services.impl.DoctorServiceImpl;
 import com.zam.studypetclinic.services.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -24,6 +25,10 @@ public class ApplicationConfiguration {
    @Autowired
    private UserServiceImpl userService;
 
+
+   @Autowired
+   private DoctorServiceImpl doctorService;
+
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
@@ -45,8 +50,16 @@ public class ApplicationConfiguration {
         return daoAuthenticationProvider;
     }
 
+    @Bean(name = "doctorProvider")
+    public AuthenticationProvider authenticationProviderForDoctor(){
+        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+        daoAuthenticationProvider.setUserDetailsService(doctorService);
+        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+        return daoAuthenticationProvider;
+    }
+
     @Bean
     public AuthenticationManager authenticationManager() throws Exception {
-        return new ProviderManager(List.of(authenticationProvider() , authenticationProviderForUser()));
+        return new ProviderManager(List.of(authenticationProvider() , authenticationProviderForUser() , authenticationProviderForDoctor()));
     }
 }

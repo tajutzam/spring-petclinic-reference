@@ -1,0 +1,101 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "PET CLINIC SPECIFICATION API",
+    "description": "API for petclinic",
+    "version": "1.0.0",
+    "license": {
+      "name": "Zam-Zami github",
+      "url": "http://www.github.com/tajutzam"
+    },
+    "contact": {
+      "name": "Mohammad Tajut Zam Zami",
+      "url": "http://www.github.com/tajutzam",
+      "email": "mohammadtajutzamzami07@gmail.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "localhost:8080"
+    }
+  ],
+  "paths": {
+
+    "/user": {
+      "get": {
+        "summary": "Returns a list of users.",
+        "description": "Optional extended description in Markdown.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/admin" : {
+      "get": {
+        "security": [
+        ],
+        "summary": "Returns a list of users.",
+        "description": "Optional extended description in Markdown.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/doctor" : {
+      "get": {
+        "security": [
+        ],
+        "summary": "Returns a list of users.",
+        "description": "Optional extended description in Markdown.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/category-pet" : {
+      "get": {
+        "security": [
+        ],
+        "summary": "Returns a list of users.",
+        "description": "Optional extended description in Markdown.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/pet" : {
+      "get": {
+        "security": [
+        ],
+        "summary": "Returns a list of users.",
+        "description": "Optional extended description in Markdown.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/schedule" : {
+      "get": {
+        "security": [
+        ],
+        "summary": "Returns a list of users.",
+        "description": "Optional extended description in Markdown.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}

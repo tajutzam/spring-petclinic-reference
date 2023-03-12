@@ -6,16 +6,24 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
+import java.util.Date;
+
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 @Builder
-public class MedicinePet extends NamedBaseEntity  {
+@AllArgsConstructor
+@NoArgsConstructor
+public class ScheduleDetails {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
     private Integer id;
-    private double price;
-    private Integer stock;
+    private Date date_schedule;
+
+    @ManyToOne
+    @JoinColumn(name = "doctor_id")
+    private Doctor doctor;
+    private boolean status_schedule; // if true , schedule has filled
+
+
 }

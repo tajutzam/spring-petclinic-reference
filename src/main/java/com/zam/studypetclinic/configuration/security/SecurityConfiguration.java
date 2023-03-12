@@ -22,16 +22,30 @@ public class SecurityConfiguration {
             "/api/v1/auth/**",
             "/api/v1/auth/admin/**",
             "/api/v1/secure/test",
+            "/api/v1/doctor/all",
+            "/api/v1/doctor/auth/signup",
+            "/api/v1/doctor/auth/authenticate",
+            "/api/v1/auth/user/**",
+            "/api/v1/"
     };
     public String[] CAN_ACCESS_ADMIN = {
             "/api/v1/secure/admin/category/**",
             "/api/v1/secure/admin/pet/**",
+            "/api/v1/employee/add",
+            "/api/v1/secure/admin/doctor/**"
     };
 
-    public String[] CAN_ACCESS_EMPLOYEE = {
+    public String[] CAN_ACCESS_DOCTOR = {
 
     };
 
+    public String[] CAN_ACCESS_DOCTOR_AND_ADMIN = {
+            "/api/v1/doctor/update"
+    };
+
+    public String[] AUTHORITIES_ADMIN_AND_DOCTOR = {
+        "DOCTOR" ,"ADMIN"
+    };
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf()
@@ -40,7 +54,8 @@ public class SecurityConfiguration {
                 .requestMatchers(WHITE_LIST_GLOBAL)
                 .permitAll()
                 .requestMatchers(CAN_ACCESS_ADMIN).hasAuthority("ADMIN")
-                .requestMatchers(CAN_ACCESS_EMPLOYEE).hasAuthority("EMPLOYEE")
+                .requestMatchers(CAN_ACCESS_DOCTOR).hasAuthority("DOCTOR")
+                .requestMatchers(CAN_ACCESS_DOCTOR_AND_ADMIN).hasAuthority("DOCTOR")
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -51,5 +66,4 @@ public class SecurityConfiguration {
                 .addFilterBefore(jwtFilterConfiguration, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
-
 }

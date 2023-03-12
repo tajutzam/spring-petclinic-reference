@@ -12,14 +12,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Pet extends NamedBaseEntity  {
+public class Pet {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Integer id;
     @ManyToOne
-    @JoinColumn(name = "category_pet_id")
+    @JoinColumn(name = "category_id")
     @JsonManagedReference
-    private CategoryPet categoryPet;
-
+    private CategoryPet category;
+    @ManyToOne
+    @JoinColumn(name = "user_id" , nullable = false)
+    private User user;
+    private String name;
 }

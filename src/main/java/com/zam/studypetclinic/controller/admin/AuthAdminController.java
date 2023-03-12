@@ -1,4 +1,4 @@
-package com.zam.studypetclinic.controller;
+package com.zam.studypetclinic.controller.admin;
 
 import com.zam.studypetclinic.dto.AdminAuthDto;
 import com.zam.studypetclinic.dto.AdminAuthLoginDto;
